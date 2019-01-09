@@ -36,7 +36,7 @@ class FJAirConditioner
 {
 
 public:
-  FJAirConditioner(PWMPin tempServo, PWMPin fanServo, PWMPin directionServo);
+  FJAirConditioner();
 
   // Temperature Settings
   void setTemperature(int temp);
@@ -117,8 +117,11 @@ int FJAirConditioner::getAirDirection() {
   return _airDirection;
 }
 
+// Sets Max heat and turns on the AC to get rid of internal fogging
 void FJAirConditioner::setMaxDefrost() {
-  //
+  this.setTemperature(MAXHEAT);
+  this.turnOnAC();
+  this.setAirDirection(DEFROSTDIRECTION);
 }
 
 
