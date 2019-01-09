@@ -80,6 +80,13 @@ FJAirConditioner::FJAirConditioner() {
   _internalAir = false;
   _airDirection = BODYDIRECTION;
   _acIsOn = false;
+
+  // private methods
+  void _moveTemperature(int temp);
+  void _turnOnFanRelays(int speed);
+  void _moveAirCirculation(bool useInternalAir);
+  void _moveAirDirection(int direction);
+
 }
 
 
@@ -93,7 +100,7 @@ int FJAirConditioner::getTemperature() {
 
 
 void FJAirConditioner::setFanSpeed(int speed) {
-  //
+
 }
 
 int FJAirConditioner::getFanSpeed() {
@@ -102,7 +109,8 @@ int FJAirConditioner::getFanSpeed() {
 
 
 void FJAirConditioner::setInternalAirCirculation(bool useInternalAir) {
-  //
+  _internalAir = useInternalAir;
+
 }
 
 bool FJAirConditioner::usingInternalAirCirculation() {
@@ -122,6 +130,7 @@ void FJAirConditioner::setMaxDefrost() {
   this.setTemperature(MAXHEAT);
   this.turnOnAC();
   this.setAirDirection(DEFROSTDIRECTION);
+  this.setFanSpeed(FANMAX);
 }
 
 
@@ -135,4 +144,25 @@ void FJAirConditioner::turnOffAC() {
 
 bool FJAirConditioner::acCurrentlyRunning() {
   return _acIsOn;
+}
+
+// private methods
+// Moves the servo to the selected temp
+void FJAirConditioner::_moveTemperature(int temp) {
+
+}
+
+// calls on the different relays required for the fan speed
+void FJAirConditioner::_turnOnFanRelays(int speed) {
+
+}
+
+// moves the servo to the slected air circulation
+void FJAirConditioner::_moveAirCirculation(bool useInternalAir) {
+
+}
+
+// moves the servo to the selected air direction, face/feet/defrest.
+void FJAirConditioner::_moveAirDirection(int direction) {
+
 }
