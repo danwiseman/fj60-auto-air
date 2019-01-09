@@ -89,38 +89,50 @@ FJAirConditioner::FJAirConditioner() {
 
 }
 
-
+// Moves the servo to the Temperature requested
+// requires: int temp with value between 0-4
 void FJAirConditioner::setTemperature(int temp) {
   //
+
+  // run a switch statement here //
 }
 
+// returns the Temperature that is currently set
 int FJAirConditioner::getTemperature() {
   return _desiredTemp;
 }
 
-
+// uses the relays to set the fan speed.
+// requires an int speed in the range 0-4
 void FJAirConditioner::setFanSpeed(int speed) {
-
+  // use a switch statement and call a private method for each fan speed
+  // see the FJ manual for the settings.
 }
 
+// returns the fan speed that is currently set
 int FJAirConditioner::getFanSpeed() {
   return _fanSpeed;
 }
 
-
+// Takes a bool to determine if to turn on or off the internal air
+// Moves the servo to the proper position
 void FJAirConditioner::setInternalAirCirculation(bool useInternalAir) {
   _internalAir = useInternalAir;
 
 }
 
+// reutns the current setting for the internal air setting
 bool FJAirConditioner::usingInternalAirCirculation() {
   return _internalAir;
 }
 
+// Moves the servo to the request air direction, Face, Feet or Defrost
+// Takes an int direction in the range of 0-2
 void FJAirConditioner::setAirDirection(int direction) {
-  //
+  // use a switch statement here and move the servo
 }
 
+// returns the current air direction
 int FJAirConditioner::getAirDirection() {
   return _airDirection;
 }
@@ -133,15 +145,17 @@ void FJAirConditioner::setMaxDefrost() {
   this.setFanSpeed(FANMAX);
 }
 
-
+// Turns on the AC by activating a switch
 void FJAirConditioner::turnOnAC() {
   //
 }
 
+// Turns off the AC by activating the switch
 void FJAirConditioner::turnOffAC() {
   //
 }
 
+// returns if the AC is currently on
 bool FJAirConditioner::acCurrentlyRunning() {
   return _acIsOn;
 }
