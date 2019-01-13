@@ -77,7 +77,7 @@ FJAirConditioner::FJAirConditioner() {
   _fanSpeed = FANMID;
   _internalAir = false;
   _airDirection = BODYDIRECTION;
-  _acIsOn = false;
+  _acIsOn = false; // Default to off to help with starting. Callers should delay the AC turning on
 
   // private methods
   void _moveTemperature(_desiredTemp);
