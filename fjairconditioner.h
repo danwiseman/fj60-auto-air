@@ -8,6 +8,8 @@ Defines the air conditioner class for the Automatic air conditioner project
 **/
 
 
+#require <Adafruit_PWMServoDriver.h>
+
 
 namespace FJAirConditionerNamespace {
   // Fan Speeds to send to the class
@@ -36,7 +38,7 @@ class FJAirConditioner
 {
 
 public:
-  FJAirConditioner();
+  FJAirConditioner(Adafruit_PWMServoDriver pwmDriver);
 
   // Temperature Settings
   void setTemperature(int temp);
@@ -67,19 +69,23 @@ private:
   bool _acIsOn;
 
 
+  Adafruit_PWMServoDriver _pwmDriver;
+
+
+
 
 };
 
 
 // Constructor. Define Defaults
-FJAirConditioner::FJAirConditioner() {
+FJAirConditioner::FJAirConditioner( ) {
   _desiredTemp = NEUTRALTEMP;
   _fanSpeed = FANMID;
   _internalAir = false;
   _airDirection = BODYDIRECTION;
   _acIsOn = false; // Default to off to help with starting. Callers should delay the AC turning on
 
-  // private methods
+  // private methods. set up those defaults
   void _moveTemperature(_desiredTemp);
   void _turnOnFanRelays(_fanSpeed);
   void _moveAirCirculation(_internalAir);
