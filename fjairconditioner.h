@@ -38,7 +38,8 @@ class FJAirConditioner
 {
 
 public:
-  FJAirConditioner(Adafruit_PWMServoDriver pwmDriver);
+  // constructor. Send it an Adafruit_PWMServoDriver,
+  FJAirConditioner(Adafruit_PWMServoDriver pwmDriver, int tempServo, int airCircServo, int airDirectionServo);
 
   // Temperature Settings
   void setTemperature(int temp);
@@ -78,12 +79,20 @@ private:
 
 
 // Constructor. Define Defaults
-FJAirConditioner::FJAirConditioner( ) {
+FJAirConditioner::FJAirConditioner(Adafruit_PWMServoDriver pwmDriver, int tempServo,
+  int airCircServo, int airDirectionServo) {
+
   _desiredTemp = NEUTRALTEMP;
   _fanSpeed = FANMID;
   _internalAir = false;
   _airDirection = BODYDIRECTION;
   _acIsOn = false; // Default to off to help with starting. Callers should delay the AC turning on
+
+  if(pwmDriver != null) {
+    _pwmDriver = pwmDriver;
+  } else {
+    _pwmDriver = Adafruit_PWMServoDriver();
+  }
 
   // private methods. set up those defaults
   void _moveTemperature(_desiredTemp);
